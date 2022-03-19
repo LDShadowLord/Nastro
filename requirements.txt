@@ -1,0 +1,4 @@
+greenlet==1.1.2
+pip==22.0.4
+setuptools==60.10.0
+SQLAlchemy==1.4.32
