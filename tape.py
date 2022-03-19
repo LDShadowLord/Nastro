@@ -25,12 +25,6 @@ if __name__ == "__main__":
                               help="Edit a Tape in the DB",
                               action="store_true")
 
-    parser.add_argument("-destroy", "-de",
-                        help="Add if you want the tape to be marked as destroyed.",
-                        action=argparse.BooleanOptionalAction)
-    parser.add_argument("-scratch", "-sc",
-                        help="Add if you want the tape to be marked as scratch.",
-                        action=argparse.BooleanOptionalAction)
     parser.add_argument("-location", "-lo",
                         help="The 6 character location ID",
                         action="store")
@@ -45,7 +39,15 @@ if __name__ == "__main__":
                         action="store")
     parser.add_argument("-slot", "-sl",
                         help="The slot that the tape is being moved to",
+                        type=int,
                         action="store")
+
+    parser.add_argument("--destroy",
+                        help="Add if you want the tape to be marked as destroyed.",
+                        action=argparse.BooleanOptionalAction)
+    parser.add_argument("--scratch",
+                        help="Add if you want the tape to be marked as scratch.",
+                        action=argparse.BooleanOptionalAction)
     
     parser.add_argument("Tape Barcode",
                         help="The 8 character barcode used to identify the tape",
