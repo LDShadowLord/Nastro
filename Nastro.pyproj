@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>023c8baf-70a6-4f3c-981f-a9a70a6fdf44</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Nastro.py</StartupFile>
+    <StartupFile>db.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -22,7 +22,12 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Nastro.py" />
+    <Compile Include="db.py" />
+    <Compile Include="nastro.py" />
+    <Compile Include="tape.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="__version__.py" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="..\env\">
@@ -34,6 +39,11 @@
       <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
       <Architecture>X64</Architecture>
     </Interpreter>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".gitignore" />
+    <Content Include="config.json" />
+    <Content Include="requirements.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
