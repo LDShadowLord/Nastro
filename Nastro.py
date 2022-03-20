@@ -2,7 +2,6 @@
 from sqlalchemy.exc import IntegrityError
 import db
 from __version__ import *
-global nastroVersion, nastroVersionZ
 
 def createNewDB(config):
     try:
@@ -84,6 +83,23 @@ def createNewDB(config):
     except sqlalchemy.exc.IntegrityError:
         print("[ERROR] You must wipe down the database first by using the '-delete_db' command.")
 
+def dropDB(config):
+    try:
+        db.Base.metadata.drop_all(db.primary_engine)
+    except :
+        print("[ERROR] Error Countered during wipe down. Incorrect Version or Corrupt Database?")
+
+def versionDB(config):
+    import sqlalchemy as sa
+    import sqlalchemy.orm
+
+    with sqlalchemy.orm.Session(db.primary_engine) as session:
+        stmt = sa.select(db.Admin).where(db.Admin.admin_id == True)
+        admin_data = session.scalars(stmt).one()
+
+        print(str(admin_data.admin_version).zfill(8))
+
+
 if __name__ == "__main__":
     #Run This Code if Being Run From CLI
     import argparse
@@ -128,8 +144,21 @@ if __name__ == "__main__":
 
     if args.create_new_db:
         createNewDB(config=args.config)
-    elif args.version:
-        report_version()
+
+    elif args.delete_db:
+        dropDB(config=args.config)
+
+    elif args.upgrade_schema:
+        pass
+
+    elif args.dump_db:
+        pass
+
+    elif args.import_db:
+        pass
+
+    elif args.db_version:
+        versionDB(config=args.config)
 
 else:
     #Run This Code if Being Imported

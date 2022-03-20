@@ -23,6 +23,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="db.py" />
+    <Compile Include="errors.py" />
     <Compile Include="nastro.py" />
     <Compile Include="tape.py">
       <SubType>Code</SubType>
