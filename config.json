@@ -1,3 +1,8 @@
 {
-
+  "primary_database": {
+    "db.url": "sqlite+pysqlite:///test.db",
+    "db.future": true,
+    "db.echo": true,
+    "db.pool_pre_ping": true
+  }
 }

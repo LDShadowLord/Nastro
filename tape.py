@@ -48,14 +48,15 @@ if __name__ == "__main__":
     parser.add_argument("--scratch",
                         help="Add if you want the tape to be marked as scratch.",
                         action=argparse.BooleanOptionalAction)
+    parser.add_argument("--config",
+                        help="The path to the config file required by the application",
+                        default="config.json",
+                        type=open,
+                        action="store")
     
     parser.add_argument("Tape Barcode",
                         help="The 8 character barcode used to identify the tape",
                         action="store")    
-    parser.add_argument("Config Path",
-                        help="The path to the config file required by the application (Usually config.json)",
-                        type=open,
-                        action="store")
 
     args = parser.parse_args()
     #End Argument Parsing
